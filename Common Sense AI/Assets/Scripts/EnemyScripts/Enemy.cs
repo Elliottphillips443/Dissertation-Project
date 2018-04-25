@@ -6,10 +6,16 @@ public class Enemy : MonoBehaviour {
 
     public float amour = 5;
     public float attack = 5;
-    private int health = 20;
-	// Use this for initialization
-	void Start () {
-		
+    public int health = 100;
+    public bool selected = false;
+    public List<GameObject> fellowenemies;
+
+    bool called = false;
+    float time = 0;
+    // Use this for initialization
+    void Start ()
+    {
+        fellowenemies = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +25,7 @@ public class Enemy : MonoBehaviour {
         {
             Destroy(this);
         }
-		
-	}
+        
+    }
+
 }

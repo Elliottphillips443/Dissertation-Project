@@ -63,7 +63,7 @@ public class Unit_Movement : MonoBehaviour {
         time += Time.deltaTime;
 
         //  Debug.Log(time);
-
+        
         if (time > 1.0f)
         {
             if //(agent.remainingDistance !=0) 
@@ -80,6 +80,7 @@ public class Unit_Movement : MonoBehaviour {
             }
             time = 0;
         }
+        /*
         if (fatigue >= disapline)
         {
             //  agent.ResetPath();
@@ -147,6 +148,7 @@ public class Unit_Movement : MonoBehaviour {
             
          //   Debug.Log("stop should work here");
        // }
+       */
     }
 
     void OnTriggerEnter(Collider collision)
@@ -159,9 +161,8 @@ public class Unit_Movement : MonoBehaviour {
             
             engagedUnits.Add(collision.gameObject);
 
-
-
-          //  agent.Stop(true);
+            goal = this.transform.position;
+            //agent.Stop(true);
 
             // if(attack > collision.gameObject.GetComponent<Enemy>().amour)
             // {

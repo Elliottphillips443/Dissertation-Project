@@ -5,6 +5,90 @@ using UnityEngine;
 public class Decision_Tree : MonoBehaviour
 {
 
+    public bool ProcessOrderLogic(float confidence , float reluctence) // processes order based on a precaulated confidence and relucatence to do an order
+    {
+        Debug.Log("confidence " + confidence + "reluctence " + reluctence);
+        if (confidence > reluctence+(reluctence/10)) // order is good return true
+        {
+            return true;
+        }
+        else if (confidence < reluctence)// order is bad return false
+        {
+            return false;
+        }
+        else // deafult to false if no other definit answer
+        {
+            return false;
+        }
+    }
+
+
+    /*
+        public bool ProcessAttackOrderLogic(int powerRatingTotal,int numberOfFriendlyUnits, int numberOfEnemyUnits)
+        {
+            int avgPowerOfFriendlys;
+            int guessEnemyPower;
+
+
+
+            avgPowerOfFriendlys = powerRatingTotal / numberOfFriendlyUnits;
+
+            guessEnemyPower = powerRatingTotal  / numberOfEnemyUnits;
+
+            while (guessEnemyPower < avgPowerOfFriendlys)
+            {
+                guessEnemyPower += (guessEnemyPower/10);
+                liklyhood++;
+            }
+            Debug.Log("liklyhood" + liklyhood);
+            if(liklyhood < 50)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        */
+    /*
+    public bool ProcessAttackOrderLogic(fuzzy attack, fuzzy defence, fuzzy health, fuzzy eAttack, fuzzy eDefence, fuzzy eHealth) 
+    {
+
+       fuzzy playersAttack = (fuzzy)attack;
+       fuzzy enemyAttack = (fuzzy)eAttack;
+       fuzzy playersDefence = (fuzzy)defence;
+       fuzzy enemyDefence = (fuzzy)eDefence;
+       fuzzy playersHealth = (fuzzy)health;
+       fuzzy enemyHealth = (fuzzy)eHealth;
+
+        Debug.Log(attack + " enemyattack " + eAttack);
+        willingness += playersAttack - enemyAttack;
+        Debug.Log(playersAttack + " enemyattack " + enemyAttack);
+        //willingness += playersDefence - enemyDefence;
+        //willingness += playersHealth - enemyHealth;
+
+        int chance = Random.Range(0, 100);
+
+        Debug.Log("willingness "+ willingness);
+
+        if(willingness > chance)
+        {
+            
+            willingness = 0;
+            Debug.Log("Will attack");
+            return true;
+        }
+        else
+        {
+            Debug.Log("wont attack");
+            
+            willingness = 0;
+            return false;
+        }
+        
+    }
+
 
     public bool ProcessAttackOrder(float piercing, float armour)
     {
@@ -99,8 +183,6 @@ public class Decision_Tree : MonoBehaviour
 
    // return false;
    */
-        }
-    }
 }
 
 

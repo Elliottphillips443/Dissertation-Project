@@ -101,8 +101,10 @@ public class Mouse_Input : MonoBehaviour
 
                         for (int i = 0; i < selectedUnits.Count; i++)
                         {
-                            if (decisionTree.GetComponent<Decision_Tree>().ProcessAttackOrder(selectedUnits[i].GetComponent<Unit_Movement>().attack, 
-                                selectedEnemyUnit.GetComponent<Enemy>().amour))
+                            if (decisionTree.GetComponent<Decision_Tree>().ProcessOrderLogic(selectedUnits[i].GetComponent<Unit_Movement>().health +
+                                selectedUnits[i].GetComponent<Unit_Movement>().attack + (selectedUnits.Count*10), 
+                                selectedEnemyUnit.GetComponent<Enemy>().amour + selectedEnemyUnit.GetComponent<Enemy>().attack
+                                + selectedEnemyUnit.GetComponent<Enemy>().health))
                             {
 
                                 selectedUnits[i].GetComponent<Unit_Movement>().SetUnitGoal(hit.point);
@@ -121,15 +123,15 @@ public class Mouse_Input : MonoBehaviour
                     for (int i = 0; i < selectedUnits.Count; i++)
                     {
 
-                        if (decisionTree.GetComponent<Decision_Tree>().ProcessMoveOrder(selectedUnits[i].GetComponent<Unit_Movement>().fatigue,
-                            selectedUnits[i].GetComponent<Unit_Movement>().disapline))
+                        if (decisionTree.GetComponent<Decision_Tree>().ProcessOrderLogic(selectedUnits[i].GetComponent<Unit_Movement>().disapline,
+                            selectedUnits[i].GetComponent<Unit_Movement>().fatigue))
                         {
-                            {
-                                selectedUnits[i].GetComponent<Unit_Movement>().SetUnitGoal(hit.point);
 
-                                Debug.Log(i + " Moving to " + hit.point);
+                            selectedUnits[i].GetComponent<Unit_Movement>().SetUnitGoal(hit.point);
 
-                            }
+                            Debug.Log(i + " Moving to " + hit.point);
+
+
                         }
 
                     }
